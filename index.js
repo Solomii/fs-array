@@ -18,31 +18,39 @@ function Product(name, price, currency, productQuantity) {
 
 function ProductPrototype() {
     this.showInfo = function () {
-        return (
-            "Product name: " +
-            this.name +
-            ", price: " +
-            this.price + " " +
-            this.currency +
-            ", quantity (remains) in stock  - " +
-            this.productQuantity
-        );
-};
-// debugger;
-this.setSaleToPrice = function (discount = 0) {
-  let discountPercent = discount/100;
-    if (Number.isNaN(Number(this.price))) {
-        return "error";
-    } else {
-          let newPrice = Number(this.price - (this.price * discountPercent).toFixed(2));
-          this.price = newPrice;
-            return (
-                "discounted price: " + this.price +  this.currency)
+        return `Product name: ${this.name}, price: ${this.price} ${this.currency}, quantity (remains) in stock  -  ${this.productQuantity}`;
+    };
+    // debugger;
+    this.setSaleToPrice = function (discount = 0) {
+        if (
+            discount === null ||
+            discount === "" ||
+            discount < 0 ||
+            Number.isNaN(discount)
+        ) {
+            return "error";
+        }
 
-            ;
+        let discountPercent = discount / 100;
+        if (Number.isNaN(Number(this.price))) {
+            return "error";
+        } else {
+            let newPrice = Number(
+                this.price - (this.price * discountPercent).toFixed(2)
+            );
+            this.price = newPrice;
+            return `discounted price: ${this.price}${this.currency};`;
         }
     };
     this.buyAmountProudct = function (amountValue) {
+        if (
+            amountValue === "" ||
+            amountValue === null ||
+            amountValue <=0 ||
+            Number.isNaN(amountValue)
+        ) {
+            return "error";
+        }
         if (this.productQuantity <= amountValue) {
             return null;
         } else {
@@ -68,4 +76,3 @@ console.log(product1.buyAmountProudct(2));
 console.log(product1.buyAmountProudct(20));
 console.log(product2.buyAmountProudct(3));
 console.log(product3.buyAmountProudct(23));
-
