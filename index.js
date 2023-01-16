@@ -69,14 +69,3 @@ buyAmountProduct(amount) - повертає загальну вартість, �
 // console.log(product2.buyAmountProudct(3));
 // console.log(product3.buyAmountProudct(23));
 
-function sum() {
-    // console.log("arguments-",arguments);
-    let summa = 0;
-    for (let i = 0; i < arguments.length; i++) {
-        summa += arguments[i];
-    }
-    return summa;
-}
-
-console.log(sum(1, 2, 3, 6));
-console.log();
