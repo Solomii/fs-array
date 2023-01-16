@@ -1,8 +1,11 @@
 //constructor for prototype
 function MyArrayPrototype() {
-    this.push = function (value) {
-        this[this.length] = value;
-        return ++this.length;
+    this.push = function () {
+        for (let index = 0; index < arguments.length; index++) {
+            this[this.length++] = arguments[index];
+            // this.length++;
+        }
+        return this.length;
     };
 
     this.pop = function () {
@@ -10,25 +13,34 @@ function MyArrayPrototype() {
             return;
         }
         const lastItem = this[this.length - 1];
-        delete this[this.length - 1];
-        this.length--;
+        delete this[--this.length];
+        // this.length--;
         return lastItem;
     };
 }
 //constructor with data
 function MyArray() {
     this.length = 0;
+    for (let index = 0; index < arguments.length; index++) {
+        this.push(arguments[index]);
+    }
 }
 
 MyArray.prototype = new MyArrayPrototype();
+// MyArray.prototype.newMethod = superMethod;
 
-const myArrayNumbers = new MyArray(4,5,6,9);
-myArrayNumbers.push(444);
+const myArrayNumbers = new MyArray(1, 2, 3);
+myArrayNumbers.push(444, 1, 1, 1, 1);
 console.log(myArrayNumbers);
 myArrayNumbers.pop();
 myArrayNumbers.pop();
 console.log(myArrayNumbers);
 
-const arrayNumbers = new Array(1,2,3,5,);
-arrayNumbers.push(777);
+const arrayNumbers = new Array(3, 5, 7);
+arrayNumbers.push(45);
 console.log(arrayNumbers);
+Array.prototype.newMethod = superMethod;
+
+function superMethod () {
+    console.log("new method!");
+};
