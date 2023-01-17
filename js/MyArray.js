@@ -17,6 +17,19 @@ function MyArrayPrototype() {
         // this.length--;
         return lastItem;
     };
+    this.reverse = function () {
+        const arrNew = new MyArray();
+
+        for (let index = this.length - 1; index >= 0; index--) {
+            arrNew.push(array[index]);
+        }
+
+        for (let index = 0; index < this.length; index++) {
+            this[index] = arrNew[index];
+        }
+
+        return arrNew;
+    };
 }
 //constructor with data
 function MyArray() {
@@ -41,6 +54,12 @@ arrayNumbers.push(45);
 console.log(arrayNumbers);
 Array.prototype.newMethod = superMethod;
 
-function superMethod () {
+function superMethod() {
     console.log("new method!");
-};
+}
+
+const newMyArrayReverse = new MyArray(1, 2, 3, 4, 5);
+newMyArrayReverse.reverse();
+console.log(newMyArrayReverse);
+
+
