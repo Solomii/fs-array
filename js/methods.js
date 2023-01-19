@@ -176,7 +176,22 @@ console.log(validateUserNameFilterMap);
 масив чисел 
  */
 
-const numberArr = [1,undefined, 2,undefined, 3, 4, 5, 6, undefined, 3, 3, 7, 8, 9];
+const numberArr = [
+    1,
+    undefined,
+    2,
+    undefined,
+    3,
+    4,
+    5,
+    6,
+    undefined,
+    3,
+    3,
+    7,
+    8,
+    9,
+];
 const key = 3;
 
 const summaEvenVlues = numberArr
@@ -198,3 +213,93 @@ const notEmptyVlueArray = numberArr.filter(function (elem) {
 console.log(summaEvenVlues);
 console.log(countKey);
 console.log(notEmptyVlueArray);
+
+const arr18 = [1, 2, 3, 4, 5];
+
+for (let index = 0; index < array.length; index++) {
+    console.log(arr18[index]);
+}
+
+arr18.forEach(logElement);
+
+function logElement(elem) {
+    console.log(elem);
+}
+
+const users18 = [
+    { name: "Brad", age: 44 },
+    { name: "Tom", age: 54 },
+    { name: "Alex", age: 24 },
+    { name: "Bob", age: 27 },
+    { name: "Rob", age: 34 },
+];
+
+users18.forEach(function (user) {
+    return (user.isSubscribe = user.age > 35 ? true : false);
+});
+
+console.table(users);
+
+const arr181 = [1, 2, 3, 4, 5];
+const arr182 = arr181.slice(0);
+const arr183 = [1, 2, 3, 4];
+
+function checkArrIndentation(arr181, arr182) {
+    if (arr181.length !== arr182.length) {
+        return false;
+    }
+    // for (let i = 1; i < arr181.length; i++) {
+    //     if (arr182[i] !== arr181[i]) {
+    //         return false;
+    //     }
+    // }
+
+    // let check =true;
+
+    // arr181.forEach(function (elem, index) {
+    //     if (elem !== arr182[index]) {
+    //         check=false;
+    //     }
+
+    // });
+    // return check;
+
+    // const check = arr181
+    //     .map(function (elem, index) {
+    //         return elem === arr182[index];
+    //     })
+    //     .includes(false);
+    // return !check;
+
+    // const check = arr181
+    //     .map(function (elem, index) {
+    //         return elem !== arr182[index];
+    //     })
+    //     .includes(false);
+    // return check;
+
+    return !(arr181
+        .map(function (elem, index) {
+            return elem === arr182[index];
+        })
+        .includes(false));
+}
+
+console.log(checkArrIndentation(arr181, arr182));
+console.log(checkArrIndentation(arr181, arr183));
+
+const key18 = 3;
+function getArrayAndKey(array18, key18) {
+    const newArray18 = [];
+    // for (let index = 0; index < array18.length; index++) {
+    //   newArray18.push(key,array18);
+    // }
+    array18.forEach(function (key18) {
+        newArray18.push(key18);
+    });
+
+    return newArray18;
+}
+
+console.log(getArrayAndKey([1, 2, 3, 4, 5, 6, 7]));
+

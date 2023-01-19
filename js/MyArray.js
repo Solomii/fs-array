@@ -30,6 +30,27 @@ function MyArrayPrototype() {
 
         return arrNew;
     };
+    this.forEach = function (func) {
+        for (let index = 0; index < this.length; index++) {
+            func(this[index], index, this);
+        }
+    };
+    this.some = function (func) {
+        for (let index = 0; index < this.length; index++) {
+            if(func(this[index],index,this)) {
+                return true;
+            }
+        }
+        return false;
+    };
+    this.every = function (func) {
+        for (let index = 0; index < this.length; index++) {
+            if (func(this[index], index, this) === false) {
+                return false;
+            }
+        }
+        return true;
+    };
 }
 //constructor with data
 function MyArray() {
@@ -42,12 +63,20 @@ function MyArray() {
 MyArray.prototype = new MyArrayPrototype();
 // MyArray.prototype.newMethod = superMethod;
 
-const myArrayNumbers = new MyArray(1, 2, 3);
-myArrayNumbers.push(444, 1, 1, 1, 1);
-console.log(myArrayNumbers);
-myArrayNumbers.pop();
-myArrayNumbers.pop();
-console.log(myArrayNumbers);
+const myArrayNumbers = new MyArray(1,18,12,13, 10, 36, 56);
+// myArrayNumbers.push(444, 1, 1, 1, 1);
+// console.log(myArrayNumbers);
+// myArrayNumbers.pop();
+// myArrayNumbers.pop();
+// console.log(myArrayNumbers);
+console.log(
+    myArrayNumbers.every(function (elem) {
+        return elem > 5;
+    })
+);
+myArrayNumbers.forEach(function (elem) {
+    console.log(elem);
+});
 
 const arrayNumbers = new Array(3, 5, 7);
 arrayNumbers.push(45);
@@ -58,8 +87,6 @@ function superMethod() {
     console.log("new method!");
 }
 
-const newMyArrayReverse = new MyArray(1, 2, 3, 4, 5);
-newMyArrayReverse.reverse();
-console.log(newMyArrayReverse);
-
-
+// const newMyArrayReverse = new MyArray(1, 2, 3, 4, 5);
+// newMyArrayReverse.reverse();
+// console.log(newMyArrayReverse);
